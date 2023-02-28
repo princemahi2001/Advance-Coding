@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+bool areRowsCircularRotated(int arr[][100], int n, int m) {
+    // Check if each row is a circular rotation of the first row
+    for (int i = 1; i < n; i++) {
+        bool found = false;
+        for (int j = 0; j < m; j++) {
+            // Check if the current row is a circular rotation of the first row
+            bool isCircularRotation = true;
+            for (int k = 0; k < m; k++) {
+                if (arr[i][(j + k) % m] != arr[0][k]) {
+                    isCircularRotation = false;
+                    break;
+                }
+            }
+            if (isCircularRotation) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n, m;
+    cout << "Enter the number of rows and columns in the matrix: ";
+    cin >> n >> m;
+
+    int arr[100][100];
+    cout << "Enter the elements of the matrix:" << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    if (areRowsCircularRotated(arr, n, m)) {
+        cout << "All the rows are in circular rotation to each other." << endl;
+    } else {
+        cout << "All the rows are not in circular rotation to each other." << endl;
+    }
+
+    return 0;
+}
