@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+void display()
+{
+	
+}
+int main()
+{
+	int arr[5]={4,23,34,43,54};
+	int size=5;
+	int mid,item=23;
+	if(size%2==0)
+	{
+		mid=size/2;
+	}
+	else
+	{
+		mid=(size/2)+1;
+	}
+	if(item<arr[mid])
+	{
+		for(int i=mid;i>=0;i--)
+		{
+			if(arr[i]==item)
+			cout<<"item is found at: "<<i;
+		}
+	}
+	else
+	{
+		for(int i=mid;i<size;i++)
+		{
+			if(arr[i]==item)
+			cout<<"item is found at: "<<i;
+		}
+	}
+}
