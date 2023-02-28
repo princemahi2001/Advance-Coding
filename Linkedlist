@@ -1,0 +1,145 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+	public:
+		int data;
+		Node *next;
+		Node(int data)
+		{
+			this->data=data;
+			next=NULL;
+		}
+};
+Node *takeinput()
+{
+	int data;
+	cin>>data;
+	Node *head=NULL;
+	Node *tail=NULL;
+	while(data!=-1)
+	{
+		Node *n=new Node(data);
+		if(head==NULL)
+		{
+			head=n;
+			tail=n;
+		}
+		else
+		{
+			tail->next=n;
+			tail=n;
+		}
+		cin>>data;
+	}
+	return head;
+}
+void display(Node *head)
+{
+	while(head!=NULL)
+	{
+		cout<<head->data<<"->";
+		head=head->next;
+	}
+	cout<<"NULL";
+}
+int length(Node *head)
+{
+	int count=0;
+	while(head)
+	{
+		head=head->next;
+		count++;
+	}
+	return count;
+}
+void print_ith_element(Node *head,int i)
+{
+	int n=length(head);
+	if(i<0 || i>n-1)
+	{
+		cout<<"-1";
+	}
+	else
+	{
+		for(int j=1;j<=i;j++)
+		{
+			head=head->next;
+		}
+		cout<<head->data;
+	}
+}
+Node *insert_at_ith(Node *head,int data,int i)
+{
+	if(i<0)
+	{
+		return head;
+	}
+	if(i==0)
+	{
+		Node *n=new Node(data);
+		n->next=head;
+		head=n;
+		return head;
+	}
+	Node *temp=head;
+	int count = 1;
+	while(count<=i-1 && head!=NULL)
+	{
+		head=head->next;
+		count++;
+	}
+	if(head)
+	{
+		Node *n=new Node(data);
+		n->next=head->next;
+		head->next=n;
+		return temp;
+	}
+	return temp;
+}
+Node *delete_ith_node(Node *head,int i)
+{
+	if(i<0)
+	{
+		return head;
+	}
+	if(i==0)
+	{
+		head=head->next;
+		return head;
+	}
+	int count=1;
+	Node *temp=head;
+	while(count<=i-1 && head!=NULL)
+	{
+		head=head->next;
+		count++;
+	}
+	if(head && head->next)
+	{
+		head->next=head->next->next;
+		return temp;
+	}
+	return temp;
+}
+int main()
+{
+	int i;
+	Node *head=takeinput();
+//	cout<<"display: ";
+//	display(head);
+//	cout<<endl<<"length: "<<length(head);
+//	cout<<"enter i value: ";
+//	cin>>i;
+//	print_ith_element(head,3);
+//	int data;
+//	cout<<"enter data and place you want to insert: ";
+//	cin>>data>>i;
+//	head=insert_at_ith(head,data,i);
+	cout<<"place you want to delete: ";
+	cin>>i;
+	head=delete_ith_node(head,i);
+	display(head);
+	return 0;
+}
