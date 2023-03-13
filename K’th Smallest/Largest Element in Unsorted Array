@@ -1,0 +1,31 @@
+Given an array and a number K where K is smaller than the size of the array. Find the K’th smallest element in the given array. Given that all array elements are distinct.
+
+Examples:  
+
+Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 3 
+Output: 7
+
+Input: arr[] = {7, 10, 4, 3, 20, 15}, K = 4 
+Output: 10 
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int n,k;
+	cout<<"enter array length: ";
+	cin>>n;
+	int arr[n];
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	cout<<"enter k value: ";
+	cin>>k;
+	sort(arr,arr+n);
+	cout<<"element is: "<<arr[k-1];
+}
