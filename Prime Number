@@ -1,0 +1,41 @@
+Write a program to find wheather a given number is prime or not. A prime number is a number which has only 2 factors 1 and itself. It has not other factors. For example number 11 is prime , but number 10 is not prime because it has 1,2,5,10 as its factors.
+
+Take n as input using scanf, Output "yes" if number is prime, otherwise print "no"
+
+
+
+
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int n;
+    cin>>n;
+    if(n==2)
+    {
+        cout<<"yes"<<endl;
+    }
+    else
+    {
+        for(int i=2;i<n-1;i++)
+        {
+            if(n%i==0)
+            {
+                cout<<"no"<<endl;
+                break;
+            }
+            else 
+            {
+                cout<<"yes"<<endl;
+                break;
+            }
+        }
+    }
+    return 0;
+}
