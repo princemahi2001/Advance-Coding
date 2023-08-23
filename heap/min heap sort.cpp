@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-void maxheap(int a[],int n)
+void minheap(int a[],int n)
 {
     for(int i=n-1;i>0;i--)
     {
@@ -33,5 +33,5 @@ int main()
     {
         cin>>a[i];
     }
-    maxheap(a,n);
+    minheap(a,n);
 }
